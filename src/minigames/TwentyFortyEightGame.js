@@ -1,8 +1,8 @@
 import { EmbedBuilder } from 'discord.js';
-import GameBase from './game-base.js';
-import { Direction, oppositeDir } from './direction.js';
-import { ResultType } from './game-result.js';
-import { isInside, move, posEqual } from './position.js';
+import GameBase from '../utils/game-base.js';
+import { Direction, oppositeDir } from '../utils/direction.js';
+import { ResultType } from '../utils/game-result.js';
+import { isInside, move, posEqual } from '../utils/position.js';
 
 const WIDTH = 4;
 const HEIGHT = 4;
@@ -17,7 +17,7 @@ export default class TwentyFortyEightGame extends GameBase {
 	gameBoard;
 
 	/**
-	 * @type {(import("./position.js").Position)[]}
+	 * @type {(import("../utils/position.js").Position)[]}
 	 */
 	mergedPos;
 
@@ -83,7 +83,7 @@ export default class TwentyFortyEightGame extends GameBase {
 	/**
 	 * @protected
 	 * @override
-	 * @param {import('./game-result.js').GameResult} result
+	 * @param {import('../utils/game-result.js').GameResult} result
 	 * @returns {import('discord.js').MessageEditOptions}
 	 */
 	getGameOverContent(result) {
@@ -163,7 +163,7 @@ export default class TwentyFortyEightGame extends GameBase {
 
 	/**
 	 * @private
-	 * @param {import("./position.js").Position} pos
+	 * @param {import("../utils/position.js").Position} pos
 	 * @param {Direction} dir
 	 * @returns {boolean}
 	 */

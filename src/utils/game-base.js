@@ -1,7 +1,7 @@
 import { ActionRowBuilder, ButtonBuilder } from 'discord.js';
 import { ResultType } from './game-result.js';
-import { DiscordButtonStyles } from '../utils/discord-button-styles.js';
-import { DiscordAPIError } from '../utils/discord-api-error.js';
+import { DiscordButtonStyles } from './discord-button-styles.js';
+import { DiscordAPIError } from './discord-api-error.js';
 
 /**
  * @abstract
@@ -130,6 +130,7 @@ export default class GameBase {
 	 * @returns {void}
 	 */
 	newGame(interaction, player2, onGameEnd) {
+		// @ts-ignore
 		this.gameStarter = interaction.user ?? interaction.member?.user;
 		this.player2 = player2;
 		this.onGameEnd = onGameEnd;

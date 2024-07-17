@@ -1,6 +1,6 @@
 /**
  * @readonly
- * @enum
+ * @enum {string}
  */
 export const Direction = {
 	UP: 'UP',
