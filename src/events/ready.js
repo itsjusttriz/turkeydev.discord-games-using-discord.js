@@ -5,6 +5,9 @@ import { registerCommandsToDiscord } from '../utils/register-commands.js';
 export default {
 	name: Events.ClientReady,
 	once: true,
+	/**
+	 * @param {import("../utils/client.js").ExtendedClient} client
+	 */
 	async execute(client) {
 		await loadCommands(client);
 		await registerCommandsToDiscord({
@@ -16,7 +19,7 @@ export default {
 			),
 		});
 
-		console.log(`Ready! Logged in as ${client.user.username}`);
-		client.user.setActivity('!gbhelp');
+		console.log(`Ready! Logged in as ${client.user?.username}`);
+		client.user?.setActivity('!gbhelp');
 	},
 };

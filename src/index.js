@@ -9,9 +9,6 @@ import { client } from './utils/client.js';
 import { loadEvents } from './utils/load-events.js';
 
 (async () => {
-	client.commands = new Collection();
-	client.commandGameMap = new Collection();
-
 	await loadEvents(client);
 
 	// Connect your client to Discord.

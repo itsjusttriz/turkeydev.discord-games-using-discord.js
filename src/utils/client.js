@@ -1,15 +1,13 @@
-import { Client, GatewayIntentBits } from 'discord.js';
+import { Client, Collection, GatewayIntentBits } from 'discord.js';
 
-/**
- * @typedef {Object} AddedProperties
- * @param {import('discord.js').Collection} commands
- * @param {import('discord.js').Collection} commandGameMap
- */
+export class ExtendedClient extends Client {
+	/**
+	 * @type {Collection.<string, import("./types.js").Command>}
+	 */
+	commands = new Collection();
+}
 
-/**
- * @type {Client & AddedProperties} client
- */
-export const client = new Client({
+export const client = new ExtendedClient({
 	intents: [
 		GatewayIntentBits.Guilds,
 		GatewayIntentBits.GuildMessages,

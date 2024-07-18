@@ -1,4 +1,5 @@
 import { Events } from 'discord.js';
+import { getPlayersGame } from '../utils/player-game-map.js';
 
 /**
  * @typedef {import('discord.js').Interaction} Interaction
@@ -13,10 +14,7 @@ export default {
 	 * @param {Interaction} interaction
 	 */
 	async execute(interaction) {
-		// TODO
-		// const userGame = getPlayersGame(interaction.guild_id as Snowflake, interaction.member?.user?.id as Snowflake);
-
-		if (interaction.isChatInputCommand()) {
+		if (interaction.isCommand()) {
 			const guildId = interaction.guild?.id;
 			if (!guildId) {
 				interaction
@@ -25,10 +23,7 @@ export default {
 				return;
 			}
 
-			const userId = interaction.member?.user?.id ?? interaction.user?.id;
-			const command = interaction.commandName;
-
-			if (!command || !userId) {
+			if (!interaction.commandName || !interaction.user.id) {
 				interaction
 					.reply(
 						'The command or user was missing somehow.... awkward...'
@@ -37,15 +32,38 @@ export default {
 				return;
 			}
 
-			return;
+			/**
+			 * @type {import("../utils/types.js").Command}
+			 */
+			// @ts-ignore
+			const command = interaction.client.commands.get(
+				interaction.commandName
+			);
+
+			if (!command) return;
+
+			try {
+				await command.execute(interaction);
+			} catch (error) {
+				console.error(error);
+				await interaction.reply({
+					content: 'There was an error while executing this command!',
+					ephemeral: true,
+				});
+			}
 		}
 
-		// TODO
-		//  if (!userGame) {
-		// 		interaction.deferUpdate().catch(console.log);
-		// 		return;
-		// 	}
+		if (interaction.guild && 'deferUpdate' in interaction) {
+			const userGame = getPlayersGame(
+				interaction.guild.id,
+				interaction.user.id
+			);
+			if (!userGame) {
+				interaction.deferUpdate().catch(console.log);
+				return;
+			}
 
-		// 	userGame.onInteraction(interaction);
+			userGame.onInteraction(interaction);
+		}
 	},
 };

@@ -1,7 +1,7 @@
 import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 /**
- * @typedef {import('discord.js').ChatInputCommandInteraction} ChatInputCommandInteraction
+ * @typedef {import('discord.js').CommandInteraction} CommandInteraction
  */
 
 /**
@@ -15,7 +15,7 @@ export default {
 
 	/**
 	 * Execute the command
-	 * @param {ChatInputCommandInteraction} interaction - The command interaction
+	 * @param {CommandInteraction} interaction - The command interaction
 	 * @returns {Promise<void>}
 	 */
 	async execute(interaction) {

@@ -1,5 +1,5 @@
 /**
- * @typedef {import('discord.js').ChatInputCommandInteraction} ChatInputCommandInteraction
+ * @typedef {import('discord.js').CommandInteraction} CommandInteraction
  * @typedef {import('discord.js').CacheType} CacheType
  */
 
@@ -11,7 +11,7 @@
 
 /**
  * @callback CommandExecuteFunction
- * @param {ChatInputCommandInteraction<CacheType>} interaction - The command interaction
+ * @param {CommandInteraction} interaction - The command interaction
  * @returns {Promise<void>|void}
  */
 

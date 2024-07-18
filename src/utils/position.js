@@ -70,5 +70,3 @@ export const posEqual = (pos1, pos2) => {
 export const isInside = (pos, width, height) => {
 	return pos.x >= 0 && pos.y >= 0 && pos.x < width && pos.y < height;
 };
-
-export default Position;

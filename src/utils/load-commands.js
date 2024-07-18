@@ -3,12 +3,7 @@ import fs from 'fs';
 import { pathToFileURL } from 'url';
 
 /**
- * @typedef {import('discord.js').Client<true>} Client
- * @typedef {import('discord.js').Collection} Collection
- */
-
-/**
- * @param {Client & {commands: Collection}} client - Your Discord Client
+ * @param {import("../utils/client.js").ExtendedClient} client - Your Discord Client
  */
 export const loadCommands = async (client) => {
 	try {
@@ -20,6 +15,15 @@ export const loadCommands = async (client) => {
 		for (const file of commandFiles) {
 			const filePath = path.join(dirPath, file);
 			const convertedPath = pathToFileURL(filePath).href;
+
+			/**
+			 * @typedef {Object} CommandFile
+			 * @property {import('./types.js').Command} default
+			 */
+
+			/**
+			 * @type {CommandFile}
+			 */
 			const { default: command } = await import(convertedPath);
 			if ('data' in command && 'execute' in command) {
 				client.commands.set(command.data.name, command);

@@ -13,7 +13,7 @@ export default class TicTacToeGame extends GameBase {
 	 * @private
 	 * @type {string}
 	 */
-	message = '';
+	message = ' ';
 
 	/**
 	 * @private

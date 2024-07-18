@@ -1,4 +1,5 @@
 import { SlashCommandBuilder } from 'discord.js';
+import { handleGameInteraction } from '../utils/handle-game-interaction.js';
 
 /**
  * @typedef {import('discord.js').ChatInputCommandInteraction} ChatInputCommandInteraction
@@ -24,9 +25,6 @@ export default {
 	 * @returns {Promise<void>}
 	 */
 	async execute(interaction) {
-		await interaction.reply({
-			content: 'This has not been configured yet.',
-			ephemeral: true,
-		});
+		await handleGameInteraction(interaction);
 	},
 };

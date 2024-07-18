@@ -13,6 +13,9 @@ export const registerCommandsToDiscord = async ({
 			`Started refreshing ${commands.length} application (/) commands.`
 		);
 
+		/**
+		 * @type {any}
+		 */
 		const data = await rest.put(
 			Routes.applicationGuildCommands(clientId, guildId),
 			{ body: commands }
