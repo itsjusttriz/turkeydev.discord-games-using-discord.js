@@ -31,3 +31,13 @@ When creating your bot's invite link, you will need to enable the following perm
 -   `Read Message History`
 -   `Add Reactions`
 -   `Use Slash Commands`
+
+## Known Bugs
+
+-   embed doesn't show. super.isInGame() is false.
+    -   Chess
+    -   Minesweeper
+-   Connect4 GameOver doesnt remove game from embed.
+-   Action rows not being removed on GameOver.
+    -   Snake
+-   "Game started. Happy Playing!" should be ephemeral.
