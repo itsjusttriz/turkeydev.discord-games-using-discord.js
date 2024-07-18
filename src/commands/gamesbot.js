@@ -1,4 +1,4 @@
-import { SlashCommandBuilder } from 'discord.js';
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 /**
  * @typedef {import('discord.js').ChatInputCommandInteraction} ChatInputCommandInteraction
@@ -19,9 +19,18 @@ export default {
 	 * @returns {Promise<void>}
 	 */
 	async execute(interaction) {
-		await interaction.reply({
-			content: 'This has not been configured yet.',
-			ephemeral: true,
-		});
+		const embed = new EmbedBuilder()
+			.setColor('#fc2eff')
+			.setTitle('Games Bot')
+			.setDescription(
+				'Welcome to GamesBot!\n\nThis bot adds lots of little games that you can play right from your Discord chat!\n\nUse `/listgames` to list all available games!\n\nAll games are started via slash commands (ex: `/flood`) and any game can be ended using `/endgame`.\n\nOnly 1 instance of each game may be active at a time and a user can only be playing 1 instance of a game at a time'
+			)
+			.setTimestamp();
+
+		interaction
+			.reply({
+				embeds: [embed],
+			})
+			.catch((_) => console.log('Failed to send games bot'));
 	},
 };
