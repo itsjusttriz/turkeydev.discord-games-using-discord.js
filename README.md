@@ -37,8 +37,6 @@ When creating your bot's invite link, you will need to enable the following perm
 -   embed doesn't show. super.isInGame() is false.
     -   Chess
     -   Minesweeper
--   GameOver doesnt remove game from embed.
-    -   Connect4
 -   Action rows not being removed on GameOver.
     -   Snake
     -   Connect4
