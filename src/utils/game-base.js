@@ -136,7 +136,9 @@ export default class GameBase {
 		this.onGameEnd = onGameEnd;
 		this.inGame = true;
 
-		interaction.reply('Game started. Happy Playing!').catch(console.log);
+		interaction
+			.reply({ content: 'Game started. Happy Playing!', ephemeral: true })
+			.catch(console.log);
 
 		const content = this.getContent();
 		interaction.channel
